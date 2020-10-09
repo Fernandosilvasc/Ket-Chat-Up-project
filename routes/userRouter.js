@@ -71,8 +71,7 @@ router.post("/login", async (req, res) => {
       token: token,
       user: {
         id: user._id,
-        userName: user.userName,
-        email: user.email,
+        userName: user.userName
       },
     });
   } catch (err) {
@@ -116,7 +115,7 @@ router.post('/tokenIsValid', async(req,res) => {
   }
 });
 
-router.get('/', auth, async (req,res)=> {
+router.get('/dashboard', auth, async (req,res)=> {
   const user = await User.findById(req.user);
   res.json({
       userName: user.userName,
